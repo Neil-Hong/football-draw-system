@@ -1,0 +1,81 @@
+.logo{
+    width: 130px;
+    height:80px;
+  }
+  
+  .logo-mc{
+    width: 77px;
+    height:80px;
+  }
+  
+  .logo-ac{
+    width: 65px;
+    height:80px;
+  }
+  
+  .logo-nf{
+    width: 50px;
+    height:80px;
+  }
+  
+  .card{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #273c75;
+    color:white;
+    text-align:right;
+    border-style: solid;
+    border-width: 0;
+    border-color: white;
+  }
+  
+  .card-header{
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: white;
+    text-align: center;
+  }
+  
+  .list-group-item{
+    background-color: #273c75;
+    color:white;
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+  }
+  
+  .start-btn{
+    margin-top: 50px;
+    margin-left: 40%;
+    margin-right: 30%;
+  }
+  
+  #icon{
+    margin-top: 50px;
+    width:200px;
+    height: 200px;
+    margin-left: 45%;
+    margin-right: 30%;
+    color: white;
+  }
+  
+  .table{
+    color: white;
+    background-color: #273c75;
+    width:60%;
+    font-size: 30px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 30px;
+    text-align:center;
+  }
+  
+  .table-s{
+    border-style: none;
+  }
+  
+  .vs-table{
+    margin-top:30px;
+  }
