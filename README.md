@@ -1,3 +1,16 @@
+# Introduction
+
+This website is a simple draw system, it imitates the Champion League quater finals draw scenario. Users can press the draw button to draw the pot1 first then the pot2, all clubs will be randomly drawed.
+
+# Preview
+
+![image](https://github.com/Neil-Hong/football-draw-system/blob/master/src/assets/images/preview1.png)
+![image](https://github.com/Neil-Hong/football-draw-system/blob/master/src/assets/images/preview2.png)
+
+# Tools used
+
+React, JavaScript, BootStrap, CSS, Html
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
