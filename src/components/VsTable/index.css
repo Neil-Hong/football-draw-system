@@ -1,0 +1,41 @@
+.table{
+    color: white;
+    background-color: #273c75;
+    width:100%;
+    font-size: 30px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 30px;
+    text-align:center;
+  }
+  
+  .table-s{
+    border-style: none;
+  }
+  
+  .vs-table{
+    margin-top:30px;
+  }
+
+  .vsTr{
+    width:245px;
+  }
+
+  .logo{
+    width: 80px;
+    height:80px;
+  }
+
+  
+  .logo-ps{
+    width: 130px;
+    height:80px;
+    padding: 0;
+    position: relative;
+  }
+
+  .start-btn{
+    margin-top: 60%;
+    margin-left: 40%;
+    margin-right: auto;
+  }

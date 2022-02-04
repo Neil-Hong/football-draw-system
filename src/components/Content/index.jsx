@@ -7,9 +7,9 @@ import Crystal from "../../assets/images/CP.png"
 import Porto from "../../assets/images/Porto.png"
 import Chelsea from "../../assets/images/Chelsea.png"
 import Barcelona from "../../assets/images/Barcelona.png"
-import Question from "../../assets/images/question.jpg"
 import Uefa from "../../assets/images/uefa.png"
 import "./index.css"
+import VsTable from '../VsTable';
 
 export default function Content() {
   return <div>
@@ -22,7 +22,7 @@ export default function Content() {
                   </div>
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item">
-                      <img className="logo" src={Paris}/>
+                      <img className="logo-ps" src={Paris}/>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PARIS SAINT-GERMAIN F.C.
                     </li>
                     <li className="list-group-item">
@@ -66,70 +66,14 @@ export default function Content() {
                 </div>
               </div>
             </div>
-            <div className="row">
-              <div className="feature-box-btn col-lg-6">
-                <button type="button" className="btn btn-primary start-btn">点击抽签1号池</button>
-              </div>
-              <div className="feature-box-btn col-lg-6">
-                <button type="button" className="btn btn-primary start-btn">点击抽签2号池</button>
-              </div>
-            </div>
+            
             <div className="row">
               <div className="feature-box col-lg-12">
                 <img id="icon" src={Uefa} />
               </div>
             </div>
             <div className="row">
-              <div className="feature-box col-lg-12 vs-table">
-                <table className="table table-borderles">
-                  <tbody>
-                    <tr>
-                      <th scope="row"></th>
-                      <td>
-                        <img className="logo" src={Question} />
-                      </td>
-                      <td>VS</td>
-                      <td><img className="logo" src={Question}  /></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table className="table table-borderles">
-                  <tbody>
-                    <tr>
-                      <th scope="row"></th>
-                      <td>
-                        <img className="logo" src={Question}  />
-                      </td>
-                      <td>VS</td>
-                      <td><img className="logo" src={Question}  /></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table className="table table-borderles">
-                  <tbody>
-                    <tr>
-                      <th scope="row"></th>
-                      <td>
-                        <img className="logo" src={Question}  />
-                      </td>
-                      <td>VS</td>
-                      <td><img className="logo" src={Question}  /></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table className="table table-borderles">
-                  <tbody>
-                    <tr>
-                      <th scope="row"></th>
-                      <td>
-                        <img className="logo" src={Question}  />
-                      </td>
-                      <td>VS</td>
-                      <td><img className="logo" src={Question}  /></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <VsTable />
             </div>
           </div>
   </div>;

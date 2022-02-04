@@ -1,4 +1,6 @@
-.logo{
+
+
+  .logo-ps{
     width: 130px;
     height:80px;
   }
@@ -46,11 +48,6 @@
     border-color: white;
   }
   
-  .start-btn{
-    margin-top: 50px;
-    margin-left: 40%;
-    margin-right: 30%;
-  }
   
   #icon{
     margin-top: 50px;
@@ -61,21 +58,3 @@
     color: white;
   }
   
-  .table{
-    color: white;
-    background-color: #273c75;
-    width:60%;
-    font-size: 30px;
-    margin-left:auto;
-    margin-right: auto;
-    margin-top: 30px;
-    text-align:center;
-  }
-  
-  .table-s{
-    border-style: none;
-  }
-  
-  .vs-table{
-    margin-top:30px;
-  }
