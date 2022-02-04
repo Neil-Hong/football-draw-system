@@ -95,9 +95,38 @@ export default function VsTable() {
     };
 
     const newHandleClick = () => {
-        if(index > groupA.length) {
+        if (index > groupA.length) {
             return;
         }
+        // 防止出现前六支队伍都正确，但最后两支在一个小组里
+        if (index === 3 && isA) {
+            let teamAIndex = -1;
+            let teamBIndex = -1;
+
+            // 找到两支相同小组的球队，teamAIndex、teamBIndex 保存该小组的两支球队
+            groupA.forEach((teamA, indexA) => {
+                if (!teamA.selected) {
+                    groupB.forEach((teamB, indexB) => {
+                        if (!teamB.selected && teamA.group === teamB.group) {
+                            teamAIndex = indexA;
+                            teamBIndex = indexB;
+                        }
+                    });
+                }
+            });
+
+            if (teamAIndex !== -1) {
+                // alert('出现特殊情况');
+                // 先抽 teamAIndex 的球队
+                const newGroup = [...groupA];
+                newGroup[teamAIndex].selected = true;
+                newGroup[teamAIndex].seq = index;
+                setGroupA(newGroup);
+                setIsA(!isA);
+                return;
+            }
+        }
+
         // debugger;
         if (isA) {
             let choice = Math.floor(Math.random() * groupA.length);
@@ -107,8 +136,7 @@ export default function VsTable() {
                 choice = Math.floor(Math.random() * groupA.length);
                 team = groupA[choice];
             }
-            console.log('A team', team, 'index', index, 'groupA', groupA);
-
+            // console.log('A team', team, 'index', index, 'groupA', groupA);
 
             const newGroup = [...groupA];
             newGroup[choice].selected = true;
@@ -117,15 +145,18 @@ export default function VsTable() {
         } else {
             let choice = Math.floor(Math.random() * groupB.length);
             let team = groupB[choice];
-            let opponent = groupA[index];
+            let opponent = groupA.find((item) => item.seq === index);
+            console.log('B team', team);
+            console.log('A team', opponent);
 
             while (team.selected === true ||
-                team?.group === opponent?.group // 判断同组
+                team.group === opponent.group // 判断同组
             ) {
                 choice = Math.floor(Math.random() * groupB.length);
                 team = groupB[choice];
+                console.log('#### B team', team);
             }
-            console.log('B team', team, 'index', index, 'groupB', groupB);
+            // console.log('B team', team, 'index', index, 'groupB', groupB);
 
             const newGroup = [...groupB];
             newGroup[choice].selected = true;
