@@ -1,6 +1,8 @@
 # Introduction
 
-This website is a simple draw system, it imitates the Champion League quater finals draw scenario. Users can press the draw button to draw the pot1 first then the pot2, all clubs will be randomly drawed.
+This website is a simple draw system, it imitates the UEFA Champions League Quarter Final draw scenario. It will draw the pot1 team first randomly then randomly draw the pot2 teams. Due to the group protection rules, it will automatically avoid the same group team in the group stage.
+
+Website Preview: https://football-draw.herokuapp.com/
 
 # Preview
 
