@@ -11,232 +11,106 @@ import Chelsea from "../../assets/images/Chelsea.png"
 import Barcelona from "../../assets/images/Barcelona.png"
 
 export default function VsTable() {
-    const initGroupA = [
+    const initGroup = [
         {
-            name: '曼城',
-            image: MC,
-            group: 'a', // 小组赛分组
+            name: '切尔西',
+            image: Chelsea,
             selected: false, // 有无被抽中
-            banqu: 'up', // 指上半区,
             seq: -1, // 顺序
         },
         {
-            name: '诺丁汉森林',
-            image: NF,
-            group: 'b', // 小组赛分组
+            name: '曼城',
+            image: MC,
             selected: false, // 有无被抽中
-            banqu: 'up', // 指上半区,
             seq: -1, // 顺序
         },
         {
             name: '米兰',
             image: Milan,
-            group: 'c', // 小组赛分组
             selected: false, // 有无被抽中
-            banqu: 'down', // 指下半区
             seq: -1, // 顺序
         },
         {
             name: '巴黎',
             image: Paris,
-            group: 'd', // 小组赛分组
             selected: false, // 有无被抽中
-            banqu: 'down', // 指下半区
             seq: -1, // 顺序
         }
     ];
 
-    const initGroupB = [
-        {
-            name: '切尔西',
-            image: Chelsea,
-            group: 'a', // 小组赛分组
-            selected: false, // 有无被抽中
-            banqu: 'up', // 指上半区
-            seq: -1, // 顺序
-        },
-        {
-            name: '波尔图',
-            image: Porto,
-            group: 'b', // 小组赛分组
-            selected: false, // 有无被抽中
-            banqu: 'up', // 指上半区
-            seq: -1, // 顺序
-        },
-        {
-            name: '巴萨',
-            image: Barcelona,
-            group: 'c', // 小组赛分组
-            selected: false, // 有无被抽中
-            banqu: 'down', // 指下半区
-            seq: -1, // 顺序
-        },
-        {
-            name: '水晶宫',
-            image: Crystal,
-            group: 'd', // 小组赛分组
-            selected: false, // 有无被抽中
-            banqu: 'down', // 指下半区
-            seq: -1, // 顺序
-        }
-    ];
+    const [group, setGroup] = useState(initGroup);
 
-    const [groupA, setGroupA] = useState(initGroupA);
-    const [groupB, setGroupB] = useState(initGroupB);
-
-    const [index, setIndex] = useState(1); // 当前在抽第几组
-    const [isA, setIsA] = useState(true); // 当前是否抽小组第一
+    const [index, setIndex] = useState(1); // 当前在抽第几个队伍
+    const [isA, setIsA] = useState(true); // 当前是否抽左边
 
     const handleReset = () => {
-        setGroupA(initGroupA);
-        setGroupB(initGroupB);
+        setGroup(initGroup);
         setIndex(1);
         setIsA(true);
     };
 
     const newHandleClick = () => {
-        if (index > groupA.length) {
+        if (index > 4) {
             return;
-        }
-        // 防止出现前六支队伍都正确，但最后两支在一个小组里
-        if (index === 3 && isA) {
-            let teamAIndex = -1;
-            let teamBIndex = -1;
-
-            // 找到两支相同小组的球队，teamAIndex、teamBIndex 保存该小组的两支球队
-            groupA.forEach((teamA, indexA) => {
-                if (!teamA.selected) {
-                    groupB.forEach((teamB, indexB) => {
-                        if (!teamB.selected && teamA.group === teamB.group) {
-                            teamAIndex = indexA;
-                            teamBIndex = indexB;
-                        }
-                    });
-                }
-            });
-
-            if (teamAIndex !== -1) {
-                // alert('出现特殊情况');
-                // 先抽 teamAIndex 的球队
-                const newGroup = [...groupA];
-                newGroup[teamAIndex].selected = true;
-                newGroup[teamAIndex].seq = index;
-                setGroupA(newGroup);
-                setIsA(!isA);
-                return;
-            }
         }
 
         // debugger;
-        if (isA) {
-            let choice = Math.floor(Math.random() * groupA.length);
-            let team = groupA[choice];
 
-            while (team.selected === true) {
-                choice = Math.floor(Math.random() * groupA.length);
-                team = groupA[choice];
-            }
-            // console.log('A team', team, 'index', index, 'groupA', groupA);
+        let choice = Math.floor(Math.random() * group.length);
+        let team = group[choice];
 
-            const newGroup = [...groupA];
-            newGroup[choice].selected = true;
-            newGroup[choice].seq = index;
-            setGroupA(newGroup);
-        } else {
-            let choice = Math.floor(Math.random() * groupB.length);
-            let team = groupB[choice];
-            let opponent = groupA.find((item) => item.seq === index);
-            console.log('B team', team);
-            console.log('A team', opponent);
-
-            while (team.selected === true ||
-                team.group === opponent.group // 判断同组
-            ) {
-                choice = Math.floor(Math.random() * groupB.length);
-                team = groupB[choice];
-                console.log('#### B team', team);
-            }
-            // console.log('B team', team, 'index', index, 'groupB', groupB);
-
-            const newGroup = [...groupB];
-            newGroup[choice].selected = true;
-            newGroup[choice].seq = index;
-            setIndex(index + 1); // 两支都抽完了
-            setGroupB(newGroup);
+        while (team.selected === true) {
+            choice = Math.floor(Math.random() * group.length);
+            team = group[choice];
         }
+        // console.log('A team', team, 'index', index, 'groupA', groupA);
 
-        setIsA(!isA);
+        const newGroup = [...group];
+        newGroup[choice].selected = true;
+        newGroup[choice].seq = index;
+        setIndex(index + 1);
+        setGroup(newGroup);
     }
 
-    const A1 = groupA.find((item) => item.seq === 1)?.image || Question;
-    const A2 = groupA.find((item) => item.seq === 2)?.image || Question;
-    const A3 = groupA.find((item) => item.seq === 3)?.image || Question;
-    const A4 = groupA.find((item) => item.seq === 4)?.image || Question;
-    const B1 = groupB.find((item) => item.seq === 1)?.image || Question;
-    const B2 = groupB.find((item) => item.seq === 2)?.image || Question;
-    const B3 = groupB.find((item) => item.seq === 3)?.image || Question;
-    const B4 = groupB.find((item) => item.seq === 4)?.image || Question;
+    const A1 = group.find((item) => item.seq === 1)?.image || Question;
+    const A2 = group.find((item) => item.seq === 3)?.image || Question;
+    const B1 = group.find((item) => item.seq === 2)?.image || Question;
+    const B2 = group.find((item) => item.seq === 4)?.image || Question;
 
-    return <>
-        <div className="feature-box col-lg-3 vs-table">
-            <button type="button" className="btn btn-primary start-btn" onClick={handleReset}>重抽</button>
+    return <div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button type="button" onClick={newHandleClick} className="button">点击抽签</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" onClick={handleReset} className="button">重抽</button>
         </div>
-        <div className="feature-box col-lg-6 vs-table">
-            <table className="table table-borderles">
+
+        <div>
+            <table className="table">
                 <tbody>
                     <tr>
-                        <td>
+                        <td className='vstd'>
                             <img className={A1 == Paris ? "logo-ps" : "logo"} src={A1} />
                         </td>
                         <td className="vsTr">VS</td>
-                        <td className="vsTr">
-                            <img className="logo" src={B1} />
+                        <td className='vstd'>
+                            <img className="logo" className={B1 == Paris ? "logo-ps" : "logo"} src={B1} />
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <table className="table table-borderles">
+            <table className="table">
                 <tbody>
                     <tr>
-                        <td>
+                        <td className='vstd'>
                             <img className={A2 == Paris ? "logo-ps" : "logo"} src={A2} />
                         </td>
                         <td className="vsTr">VS</td>
-                        <td className="vsTr">
-                            <img className="logo" src={B2} />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table className="table table-borderles">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img className={A3 == Paris ? "logo-ps" : "logo"} src={A3} />
-                        </td>
-                        <td className="vsTr">VS</td>
-                        <td className="vsTr">
-                            <img className="logo" src={B3} />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table className="table table-borderles">
-                <tbody>
-                    <tr>
-                        <td>
-                            <img className={A4 == Paris ? "logo-ps" : "logo"} src={A4} />
-                        </td>
-                        <td className="vsTr">VS</td>
-                        <td className="vsTr">
-                            <img className="logo" src={B4} />
+                        <td className='vstd'>
+                            <img className="logo" className={B2 == Paris ? "logo-ps" : "logo"} src={B2} />
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div className="feature-box col-lg-3 vs-table">
-            <button type="button" className="btn btn-primary start-btn" onClick={newHandleClick}>点击抽签</button>
-        </div>
-    </>;
+    </div>;
 }

@@ -1,9 +1,9 @@
 .table{
     color: white;
     background-color: #273c75;
-    width:80%;
+    width:100%;
     font-size: 30px;
-    margin-left: auto;
+    margin-left:auto;
     margin-right: auto;
     margin-top: 30px;
     text-align:center;
@@ -38,12 +38,4 @@
     margin-top: 60%;
     margin-left: 40%;
     margin-right: auto;
-  }
-
-  .button {
-    font-size: 20px;
-  }
-
-  .vstd {
-    width: 40%;
   }
